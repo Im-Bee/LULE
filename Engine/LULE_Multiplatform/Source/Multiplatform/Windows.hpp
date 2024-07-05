@@ -20,7 +20,7 @@ namespace LULE::Application {
 
 	public:
 		ILWindow() = default;
-		ILWindow(LWindowProps&& props) : m_Props(std::move(props)) {};
+		explicit ILWindow(LWindowProps&& props) : m_Props(std::move(props)) {};
 		~ILWindow() = default;
 
 	public:
@@ -58,6 +58,7 @@ namespace LULE::Application {
 
 	public:
 		BaseWindow() = default;
+		explicit BaseWindow(LWindowProps&& props) : ILWindow(std::move(props)) {};
 		~BaseWindow() {
 			this->Destroy();
 		}
