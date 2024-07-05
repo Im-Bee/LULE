@@ -59,6 +59,7 @@ namespace LULE::Application {
 	public:
 		BaseWindow() = default;
 		explicit BaseWindow(LWindowProps&& props) : ILWindow(std::move(props)) {};
+		explicit BaseWindow(LWindowProps& props) : ILWindow(std::move(props)) {};
 		~BaseWindow() {
 			this->Destroy();
 		}
