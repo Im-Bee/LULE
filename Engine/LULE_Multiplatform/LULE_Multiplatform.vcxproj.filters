@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Private">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Public">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="PCH">
+      <UniqueIdentifier>{707b52aa-61d7-49a3-91ea-115598e29c1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\Multiplatform">
+      <UniqueIdentifier>{28d63ec4-8fa3-4de8-83b3-dccef7154bf4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Private\Multiplatform">
+      <UniqueIdentifier>{e2f0018d-480d-451b-8200-4c121df854e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Private\Utilities">
+      <UniqueIdentifier>{cba8e186-7197-4f42-9b44-00262111213b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\Utilities">
+      <UniqueIdentifier>{aa13a0ef-5542-4202-b00f-58cee7090471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\EntryPoints">
+      <UniqueIdentifier>{0505f21a-0b52-46a4-8303-46ba6928e2fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\EntryPoints\Win32">
+      <UniqueIdentifier>{bd419c9d-34e4-4c3d-96d3-9cef38b86816}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Build">
+      <UniqueIdentifier>{078b748b-d85e-4c79-ba2a-6af87dfbcae5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Build\VisualStudio">
+      <UniqueIdentifier>{b8e93992-6246-4f42-9cfc-c6bb100125f8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\Multiplatform\Defs.h">
+      <Filter>Public\Multiplatform</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Multiplatform\AppProperties.hpp">
+      <Filter>Public\Multiplatform</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utilities\LAllocator.hpp">
+      <Filter>Public\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utilities\LPair.hpp">
+      <Filter>Public\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utilities\LTuple.hpp">
+      <Filter>Public\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utilities\LVector.hpp">
+      <Filter>Public\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Multiplatform\Exception.hpp">
+      <Filter>Public\Multiplatform</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\EntryPoints\Win32\Entry.hpp">
+      <Filter>Public\EntryPoints\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Multiplatform\IApplication.hpp">
+      <Filter>Public\Multiplatform</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Multiplatform\Windows.hpp">
+      <Filter>Public\Multiplatform</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\LULE_Multiplatform.h">
+      <Filter>PCH</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\Multiplatform\AppProperties.cpp">
+      <Filter>Private\Multiplatform</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Utilities\LAllocator.cpp">
+      <Filter>Private\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Multiplatform\Exception.cpp">
+      <Filter>Private\Multiplatform</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Multiplatform\Windows.cpp">
+      <Filter>Private\Multiplatform</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Build\VisualStudio\PostBuild.ps1">
+      <Filter>Build\VisualStudio</Filter>
+    </None>
+  </ItemGroup>
+</Project>
