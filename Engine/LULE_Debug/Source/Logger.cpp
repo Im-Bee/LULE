@@ -140,7 +140,7 @@ std::wstring LULE::Debug::Logger::CreateTag(
 void LULE::Debug::Logger::StartWriteThread() {
 	if (m_tWriteThread ||
 		m_bWrite.load()) {
-		// TO DO: Raise an exception
+		// TO DO: Throw an exception
 	}
 
 	m_bWrite.store(true);
