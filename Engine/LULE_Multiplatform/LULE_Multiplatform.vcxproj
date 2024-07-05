@@ -38,7 +38,7 @@
     <ClCompile Include="Source\Utilities\LAllocator.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Build\VisualStudio\PostBuild.ps1" />
+    <None Include="..\..\Build\VisualStudio\PostBuild.bat" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
