@@ -33,13 +33,13 @@ void LULE::Application::BaseWindow::CreateAndRegister() {
         this);
 
     if (!m_HWND)
-        throw;
+        throw ExceptionWasNullptr(LULE_COLLECT_EDATA());
 }
 
 // -----------------------------------------------------------------------------
 void LULE::Application::BaseWindow::Show() {
     if (!m_HWND)
-        throw "No window";
+        throw ExceptionWasNullptr(LULE_COLLECT_EDATA());
 
     if (!IsWindowVisible(m_HWND))
         ShowWindow(m_HWND, SW_SHOWNORMAL);
@@ -67,13 +67,13 @@ void LULE::Application::BaseWindow::UpdateDimensions() {
     using std::move;
 
     if (!m_HWND)
-        throw;
+        throw ExceptionWasNullptr(LULE_COLLECT_EDATA());
 
     static LUINT32 leftNtop[2] = { 0, 0 };
     static LUINT32 widthNheight[2] = { 0, 0 };
     RECT now = {};
     if (!GetWindowRect(m_HWND, &now))
-        throw;
+        throw ExceptionWasNullptr(LULE_COLLECT_EDATA());
 
     // m_Props was updated, set new postion or resize
     if (leftNtop[0] != m_Props.Left ||

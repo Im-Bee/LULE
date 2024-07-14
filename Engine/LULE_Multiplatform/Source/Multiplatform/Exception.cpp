@@ -8,7 +8,6 @@
 // -----------------------------------------------------------------------------
 LULE::Exception::Exception(ExceptionData&& data) noexcept
 	: m_Data(std::move(data)) {
-
 	if (m_Data.Message[0] == 0)
 		strcpy_s(m_Data.Message, "No message!");
 
@@ -23,9 +22,14 @@ LUINT8 LULE::Exception::Raport() {
 	using namespace LULE::Application;
 
 	LUINT8 failedWrite = 0;
+	// Create the path.
 	wcscpy_s(
 		m_szRaportLocation, 
 		AppProperties::Get().GetKnownPath(KnownPaths::UserAppData).c_str());
+	wcscat_s(
+		m_szRaportLocation,
+		L"Error.log");
+
 	fstream fOut = fstream(m_szRaportLocation);
 	if (!fOut.is_open()) {
 		failedWrite = 1;
@@ -40,7 +44,10 @@ LUINT8 LULE::Exception::Raport() {
 	}
 
 	// Write error to file
-
+	fOut << L"An exception occured in file: '" << m_Data.File << L"'\r";
+	fOut << L"At line: " << m_Data.Line << L"\r";
+	fOut << L"What: " << this->What() << L"\r";
+	fOut << L"Message: \r" << m_Data.Message;
 
 	return failedWrite;
 }
@@ -64,8 +71,11 @@ void LULE::Exception::PopUp(const LUINT8& didRaportFailed) {
 
 	errorMsg << L"An exception occured in file: '" << m_Data.File << "'\r";
 	errorMsg << L"At line: " << m_Data.Line << "\r";
-	errorMsg << L"What: \r" << this->What();
-	errorMsg << L"Message:\r" << m_Data.Message;
+	errorMsg << L"What: " << this->What() << L"\r";
+	if (m_Data.Message[0] != L'\0')
+		errorMsg << L"Message: \r" << m_Data.Message;
+	else
+		errorMsg << L"Message: \rNo message.";
 
 #ifdef _WIN32
 	MessageBox(

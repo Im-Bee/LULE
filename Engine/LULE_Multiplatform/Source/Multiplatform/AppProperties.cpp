@@ -29,7 +29,7 @@ void LULE::Application::AppProperties::FindKnownPaths(std::vector<std::wstring>&
 			AppProperties::FindUserAppdataPath(vec[i]);
 			continue;
 		default:
-			throw;
+			throw ExceptionOutsideOfScope(LULE_COLLECT_EDATA());
 		}
 	}
 }
@@ -38,7 +38,7 @@ void LULE::Application::AppProperties::FindKnownPaths(std::vector<std::wstring>&
 void LULE::Application::AppProperties::TrimPathExe(std::wstring& path) {
 	// Check if it's null terminated
 	if (path.size() >= LULE_PATH_MAX_SIZE)
-		throw;
+		throw ExceptionBadString(LULE_COLLECT_EDATA());
 
 	// Force to find the last slash
 	auto i = path.find_last_of(L'\\');
@@ -47,7 +47,7 @@ void LULE::Application::AppProperties::TrimPathExe(std::wstring& path) {
 
 	// Something is not okay, throw
 	if (i == std::string::npos)
-		throw;
+		throw ExceptionBadString(LULE_COLLECT_EDATA());
 
 	// Trim the path
 	path.erase(i + 1);

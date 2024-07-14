@@ -44,6 +44,7 @@ void LULE::Debug::Logger::Log(Severity s, const LWCHAR* format, ...) {
 // -----------------------------------------------------------------------------
 void LULE::Debug::Logger::CreateTargetFile() {
 	wcscpy_s(m_szTargetFile, LULE::Application::AppProperties::Get().GetKnownPath(LULE::Application::KnownPaths::UserAppData).c_str());
+	// For now don't create actuall separte file log
 	wcscat_s(m_szTargetFile, L"Current.log");
 }
 
@@ -140,7 +141,7 @@ std::wstring LULE::Debug::Logger::CreateTag(
 void LULE::Debug::Logger::StartWriteThread() {
 	if (m_tWriteThread ||
 		m_bWrite.load()) {
-		// TO DO: Throw an exception
+		throw ExceptionThreading(LULE_COLLECT_EDATA());
 	}
 
 	m_bWrite.store(true);

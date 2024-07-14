@@ -10,7 +10,7 @@ LULE::LAllocator::LAllocator(const LUINT64& uInitialByteSize)
 #   error "_LUL_::LAllocator::LAllocator(const LUINT64& uInitialByteSize) not implemented on current system."
 #endif
 	if (_RawBuffer == nullptr)
-		throw;
+		throw ExceptionWasNullptr(LULE_COLLECT_EDATA());
 
 	m_uBegBuffPosition = reinterpret_cast<MEM_LOCATION>(_RawBuffer);
 	m_uEndBuffPosition = m_uBegBuffPosition + m_uByteCapacity;
@@ -32,7 +32,7 @@ LULE::LAllocator::LAllocator(LAllocator&& other) {
 		other._RawBuffer,
 		other.m_uByteCapacity);
 	if (e) {
-		throw;
+		throw ExceptionWasNullptr(LULE_COLLECT_EDATA());
 	}
 
 	m_uBegBuffPosition = reinterpret_cast<MEM_LOCATION>(_RawBuffer);
@@ -42,7 +42,7 @@ LULE::LAllocator::LAllocator(LAllocator&& other) {
 // -----------------------------------------------------------------------------
 LULE::LAllocator::~LAllocator() {
 	if (!HeapFree(GetProcessHeap(), NULL, _RawBuffer)) {
-		throw;
+		throw ExceptionWasNullptr(LULE_COLLECT_EDATA());
 	}
 }
 
@@ -60,7 +60,7 @@ void LULE::LAllocator::_Resize(const LUINT64& uByteResize) {
 
 	if (reallocPtr == nullptr) {
 		// TO DO: Fiugre out what to do after HeapReAlloc fails.
-		throw;
+		throw ExceptionWasNullptr(LULE_COLLECT_EDATA());
 	}
 
 	_RawBuffer = reallocPtr;

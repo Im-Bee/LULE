@@ -3,6 +3,7 @@
 * - Exceptions
 * - Logger
 * - Console output
+* - Profiler
 **/
 
 #ifndef LULE_DEBUG_H
